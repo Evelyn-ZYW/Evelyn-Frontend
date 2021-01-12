@@ -1,0 +1,10 @@
+.App {
+  // text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #E5E5E5;
+}
+
+//below step is to use scss on the imported page
+@import "./pages/main/main.scss";
+@import "./pages/user/user.scss";
