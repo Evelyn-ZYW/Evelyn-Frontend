@@ -13,6 +13,7 @@ const Container = styled.div`
     justify-content: center;
     // border: red solid 1px;
     background-color: #FFFFFF;
+    position: relative;
 `;
 const Tabs = styled.span`
 position: absolute;
@@ -61,6 +62,8 @@ const FormButton = styled.button`
     border: none;
     margin-top: 40px;
     color: #FFF;
+    position: absolute;
+    bottom: 10px;
 `;
 
 const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onTabSelect, onRegister, onLogin, }) => {
