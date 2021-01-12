@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -25,6 +25,7 @@ const FormButton = styled.button`
 `;
 const FormCheckbox = styled.input.attrs({ type: 'checkbox' })``;
 
+var timer = null;
 //'onFormComplete' & 'onContainerSelect' are Handlers. 
 //They are to capture the effects after clicked on the button or container
 //The 2 interactions I want to capture is when I click on the container and the button
@@ -36,16 +37,35 @@ const Form = ({name, width, height, bgcolor, onFormComplete, onContainerSelect})
     const [check2, setCheck2] = useState(false)
     const [check3, setCheck3] = useState(false);
 
+    useEffect(()=>{
+        setCheck1(check3);
+        setCheck2(check3);
+    }, [check3]);
+    
+    useEffect(()=>{
+        //detect the bgcolor
+    }, [bgcolor]);
+
+    useEffect(()=>{
+        timer = setInterval(()=>{
+            console.log("time is running out")
+        }, 1000)
+        return ()=>{
+            //this is death
+            clearInterval(timer);
+        }
+    }, []);
+
     return <Container onClick={()=>{
         onContainerSelect(name)
     }} width={width} height={height} bgcolor={bgcolor}>
         <FormInput type='text' placeholder='name' onChange={(e)=>{setUsername(e.target.value)}}/>
         <FormInput type='password' placeholder='pass' onChange={(e)=>{setPass(e.target.value)}}/>
         <span>
-            <FormCheckbox onChange={(e)=>{setCheck1(e.target.checked)}}/> I agree to sell my soul
+            <FormCheckbox onChange={(e)=>{setCheck1(e.target.checked)}} checked={check1}/> I agree to sell my soul
         </span>
         <span>
-            <FormCheckbox onChange={(e)=>{setCheck2(e.target.checked)}}/> I agree to sell my life
+            <FormCheckbox onChange={(e)=>{setCheck2(e.target.checked)}} checked={check2}/> I agree to sell my life
         </span>
         <span>
             <FormCheckbox onChange={(e)=>{setCheck3(e.target.checked)}}/> I agree to give up all of the above

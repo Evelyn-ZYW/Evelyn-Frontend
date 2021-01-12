@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // import Form from '../../comps/Form'; | //this will get tiring and confusing, below is another way to import
 import Form from 'comps/Form';
@@ -16,6 +16,10 @@ const Main = () => {
     const HandleFormComplete = (username, pass, check1, check2, check3) => {
         console.log(username, pass, check1, check2, check3)
     }
+
+    useEffect(()=>{
+        alert("page loaded")
+    }, []);
 
     return <div className="main">
         <div className="left"></div>
