@@ -33,30 +33,29 @@ const Row = styled.div`
   font-size: 24pt;
 `;
 
-const Exercise = ({ id, name, reps, cal, timestamp }) => {
+const Exercise = ({ info }) => {
   return <Container>
     <Subject>exercise</Subject>
     <Row>
       <b>id</b>
-      <span>{id}</span>
+      {info.map((o) => <span>{ o.id }</span>)}
     </Row>
     <Row>
       name
-      <span>{name}</span>
+     {info.map((o) =>  <span>{ o.name }</span>)}
     </Row>
     <Row>
       reps
-      <span>{reps}</span>
+      {info.map((o) => <span>{ o.reps }</span>)}
     </Row>
     <Row>
       calories
-      <span>{cal}</span>
+      {info.map((o) => <span>{ o.calories }</span>)}
     </Row>
     <Row>
       created
-    <span>{timestamp}</span>
+    {info.map((o) => <span>{ o.created }</span>)}
     </Row>
-
   </Container>
 }
 
