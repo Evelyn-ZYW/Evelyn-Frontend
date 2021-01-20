@@ -1,0 +1,20 @@
+.main {
+    display: flex;
+    & > div {
+        flex: 1;
+    }
+    .left {
+        background-color: #fad;
+    }
+    .content {
+        background-color: #dad;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        flex: 4;
+    }
+    .right {
+        background-color: #bad;
+    }
+}
