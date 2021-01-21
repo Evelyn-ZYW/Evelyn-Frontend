@@ -55,7 +55,7 @@ const FormInput = styled.input`
 const FormButton = styled.button`
     max-width: 100%;
     max-height: 100px;
-    min-width: 382px;
+    min-width: 390px;
     min-height: 46px;
     background: #4285F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -64,6 +64,10 @@ const FormButton = styled.button`
     color: #FFF;
     position: absolute;
     bottom: 10px;
+    &:hover {
+    background: #003AF0;
+    cursor: pointer;
+    }
 `;
 
 const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onTabSelect, onRegister, onLogin, }) => {

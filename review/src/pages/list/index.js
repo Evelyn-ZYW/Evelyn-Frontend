@@ -24,15 +24,21 @@ const List = () => {
   }
 
   return <div className="list">
-    <Send
-      onFormComplete={HandleFormComplete}
-    />
-    <div className="sub">Exercise List</div>
-    {info.map((o, i) => <Exercise
-      name={o.exercise}
-      reps={o.reps}
-      calories={o.cal}
-    />)}
+    <span>
+      <div className="sub">Adding an Exercise</div>
+      <Send
+        onFormComplete={HandleFormComplete}
+      />
+    </span>
+    <span>
+      <div className="sub">Exercise List</div>
+      {info.map((o, i) => <Exercise
+        name={o.name}
+        reps={o.reps}
+        cal={o.calories}
+      />)}
+    </span>
+
   </div>
 }
 

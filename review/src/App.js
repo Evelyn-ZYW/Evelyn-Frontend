@@ -10,9 +10,9 @@ function App() {
       {/* <Form />
       <Form width="1000px" height="400px" />
       <Form width="1000px" bgcolor="red"/> */}
-      {/* <Main /> */}
+      <Main />
       {/* <User /> */}
-      <List />
+      {/* <List /> */}
     </div>
   );
 }

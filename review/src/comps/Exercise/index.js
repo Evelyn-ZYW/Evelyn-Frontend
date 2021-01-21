@@ -4,16 +4,16 @@ import styled from 'styled-components';
 const Container = styled.div`
   min-width: 200px;
   max-width: 300px;
-  min-height: 300px;
-  max-height: 400px;
-  border: 2px solid pink;
+  min-height: 200px;
+  max-height: 300px;
+  border: 1px solid pink;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   position: relative;
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
 `;
 
 const Subject = styled.div`
@@ -29,20 +29,21 @@ const Row = styled.div`
   min-height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Exercise = ({ name, reps, cal }) => {
   return <Container>
     <Row>
-      Name
+      Name:
       <span>{name}</span>
     </Row>
     <Row>
-      Reps
+      Reps:
       <span>{reps}</span>
     </Row>
     <Row>
-      Calories
+      Calories:
       <span>{cal}</span>
     </Row>
   </Container>
