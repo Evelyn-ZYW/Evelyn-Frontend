@@ -2,27 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  min-width: 400px;
-  max-width: 500px;
-  min-height: 500px;
-  max-height: 600px;
-  background-color: white;
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 300px;
+  max-height: 400px;
+  border: 2px solid pink;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   position: relative;
+  margin: 10px;
+  padding: 20px;
 `;
 
 const Subject = styled.div`
-  background-color: blue;
   color: white;
   min-height: 50px;
   min-width: 100%;
   display: flex;
   align-items: center;
-  font-size: 24pt;
-  position: absolute;
-  top: -30px;
 `;
 
 const Row = styled.div`
@@ -30,31 +29,21 @@ const Row = styled.div`
   min-height: 50px;
   display: flex;
   align-items: center;
-  font-size: 24pt;
 `;
 
-const Exercise = ({ info }) => {
+const Exercise = ({ name, reps, cal }) => {
   return <Container>
-    <Subject>exercise</Subject>
     <Row>
-      <b>id</b>
-      {info.map((o) => <span>{ o.id }</span>)}
+      Name
+      <span>{name}</span>
     </Row>
     <Row>
-      name
-     {info.map((o) =>  <span>{ o.name }</span>)}
+      Reps
+      <span>{reps}</span>
     </Row>
     <Row>
-      reps
-      {info.map((o) => <span>{ o.reps }</span>)}
-    </Row>
-    <Row>
-      calories
-      {info.map((o) => <span>{ o.calories }</span>)}
-    </Row>
-    <Row>
-      created
-    {info.map((o) => <span>{ o.created }</span>)}
+      Calories
+      <span>{cal}</span>
     </Row>
   </Container>
 }
