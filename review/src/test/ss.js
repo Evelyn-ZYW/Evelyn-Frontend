@@ -39,11 +39,11 @@ var arr3 = [
     },
 ];
 //slice can takes 2 parameters slice(a, b)
-//a is the start item, b is the end item. the result is the items between a and b(including a & b).
+//a is the start item, b is the end item. the result is the items between a and b(including a & excluding b).
 //slice does not change the original array
 //slice is used to limit the amount of items show on the screen, / pagination页码标注
-var sliced = arr.slice(3, 7);
-// console.log("sliced", sliced);
+var sliced = arr.slice(3, 8);
+console.log("sliced", sliced);
 
 //splice can takes 2 parameters splice(a, b)
 //a is the start item, b is the number of items that will be taken out
@@ -92,4 +92,4 @@ var filtered2 = arr3.filter((o, i) => {
     // return o.name !== "Sam"
     return (o.name.includes("en") || o.name.includes("a")) && o.count > 5;
 })
-console.log(filtered2)
+// console.log(filtered2)
