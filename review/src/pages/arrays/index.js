@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Pagin from 'comps/Pagin';
+import Form from 'comps/Form';
+import Items from 'comps/Items';
 
 const ArrayPage = () => {
     const [msgs, setMsgs] = useState([]);
     const [allmsgs, setAll] = useState([]);
+    const [selectedId, setSelectedId] = useState(null); // this is the state to capture the id; use null here is avoid updating by accident
     const item_per_page = 3; //3 items per page
 
     const GetMessages = async () => {
         var resp = await axios.get("https://advdyn2021.herokuapp.com/allmessages")
         // console.log("get message", resp)
         setAll(resp.data);
-        var arr = resp.data.slice(0, 3)
+        var arr = resp.data.slice(0, 5)
         setMsgs(arr)
     }
 
@@ -63,6 +66,18 @@ const ArrayPage = () => {
         )
     }
 
+    const UpdateMessage = async (username, pass, msg, check1, check2, check3) => {
+        console.log(msg);
+        if (selectedId === null) {
+            return false;
+        }
+        var resp = await axios.post("https://advdyn2021.herokuapp.com/editmessage", {
+            id: selectedId,
+            message: msg
+        })
+        GetMessages();
+    }
+
     useEffect(() => {
         GetMessages()
     }, [])
@@ -72,15 +87,22 @@ const ArrayPage = () => {
         {msgs.map(o => {
         var date = new Date(o.created);
         return <div>
-            <div>{o.username}</div>
-            <div>{date.getMonth() + 1} / {date.getDate()} - {date.getHours()} : {date.getMinutes()}</div>
+            <Items
+                id={o.id}
+                onClick={(id) => {
+                    console.log(id)
+                    setSelectedId(id)
+                }}
+                message={o.message}
+                username={o.username}
+                created={o.created}
+                highlight={selectedId === o.id}
+            />
         </div>
-    })
-        }
+    })}
+        <Form onFormComplete={UpdateMessage} />
 
-
-
-        <input type="number" defaultValue={1} onChange={(e) => {
+        {/* <input type="number" defaultValue={1} onChange={(e) => {
             ChangePage(e.target.value)//pass the input value over to the num in the ChangePage function
         }} />
         <div>Filter</div>
@@ -92,9 +114,9 @@ const ArrayPage = () => {
         }} />
         <button onClick={SortMsgs}>Sort by Username</button>
         <button onClick={SortMsgsDate}>Sort by Date</button>
-        <Pagin numpages={Math.ceil(allmsgs.length / 3)} 
-        onClickPage={ChangePage}
-        />{/* Math.ceil is used to round up page numbers */}
+        <Pagin numpages={Math.ceil(allmsgs.length / 3)}
+            onClickPage={ChangePage}
+        />Math.ceil is used to round up page numbers */}
     </div>
 }
 
@@ -125,6 +147,15 @@ function sortByDate(a, b) {
         return 0
     }
 }
+
+/*
+To Update
+1 - pass the id to the component (if you are using a component)
+2 - have a handler to capture an interaction that passes the id back out to the page
+3 - have a state ready to remember the id to update (setState)
+4 - use the state id for your axios call so you can pass the id + other data to the backend
+5 - make the axios call and re read everything.
+*/
 
 /*
 PAGINATE

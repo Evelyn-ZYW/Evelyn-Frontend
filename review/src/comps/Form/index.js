@@ -47,6 +47,7 @@ const Form = ({ name, width, height, bgcolor, onFormComplete, onContainerSelect 
         //detect the bgcolor
     }, [bgcolor]);
 
+/*
     useEffect(() => {
         timer = setInterval(() => {
             console.log("time is running out")
@@ -56,6 +57,7 @@ const Form = ({ name, width, height, bgcolor, onFormComplete, onContainerSelect 
             clearInterval(timer);
         }
     }, []);
+*/
 
     return <Container onClick={() => {
         onContainerSelect(name)
