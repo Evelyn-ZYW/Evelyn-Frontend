@@ -5,7 +5,14 @@ import Pagin from 'comps/Pagin';
 import Form from 'comps/Form';
 import Items from 'comps/Items';
 
-const ArrayPage = () => {
+import {
+    useParams,
+  } from "react-router-dom";
+
+
+const Array = () => {
+    const params = useParams();
+    console.log(params.id)
     const [msgs, setMsgs] = useState([]);
     const [allmsgs, setAll] = useState([]);
     const [selectedId, setSelectedId] = useState(null); // this is the state to capture the id; use null here is avoid updating by accident
@@ -120,7 +127,7 @@ const ArrayPage = () => {
     </div>
 }
 
-export default ArrayPage;
+export default Array;
 
 /*
 function sortByUsername(a, b) {

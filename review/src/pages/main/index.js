@@ -4,10 +4,18 @@ import React, { useState, useEffect } from 'react';
 import Form from 'comps/Form';
 import Messages from 'comps/Messages';
 
+import {
+    useHistory,
+    useLocation
+  } from "react-router-dom";
+
 import axios from 'axios';
 
 const Main = () => {
 
+    const history = useHistory();
+    const location = useLocation();
+    console.log(location);
     const [clickedForm, setClickedForm] = useState(null);
 
     //initial state for the messages
@@ -29,7 +37,8 @@ const Main = () => {
         console.log("create", resp)
 
         //update state
-        GetMsgs();
+        // GetMsgs();
+        history.push("/arrays");
     }
 
     const GetMsgs = async () => {
