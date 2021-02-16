@@ -5,6 +5,7 @@ import User from 'pages/user';
 import List from 'pages/list';
 import Array from 'pages/arrays';
 import ReadData from 'pages/read_data';
+import Profile from 'pages/read_data/profile';
 
 import {
   BrowserRouter as Router,
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/arrays/:id">
             <Array />
+          </Route>
+          <Route path="/profile/:id">
+            <Profile />
           </Route>
         </Switch>
       </div>
