@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom';
 const ReadData = () => {
     const [ds, setDs] = useState([]);
     const GetData = async () => {
-        var resp = await axios.get("https://advdyn2021.herokuapp.com/allusers");
+        // var resp = await axios.get("https://advdyn2021.herokuapp.com/allusers");
         var resp2 = await axios.get("https://advdyn2021.herokuapp.com/alldiscussions");
         // var resp3 = axios.get("https://advdyn2021.herokuapp.com/allusers");
-        console.log(resp.data, resp2.data);
+        console.log(resp2.data);
         setDs([...resp2.data]);
     }
     useEffect(() => {

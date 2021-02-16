@@ -14,6 +14,7 @@ const Profile = () => {
         // setDs([...resp2.data]);
         var resp = await axios.get("https://advdyn2021.herokuapp.com/user_by_id/"+params.id);
         console.log(resp)
+        // console.log(params)
         setP({...resp.data[0]});
     }
     useEffect(() => {
