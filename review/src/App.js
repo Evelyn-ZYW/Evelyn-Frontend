@@ -4,6 +4,7 @@ import Main from 'pages/main';
 import User from 'pages/user';
 import List from 'pages/list';
 import Array from 'pages/arrays';
+import ReadData from 'pages/read_data';
 
 import {
   BrowserRouter as Router,
@@ -22,7 +23,7 @@ function App() {
         </div>
         <Switch>
           <Route exact path="/">
-            <Main />
+            <ReadData />
           </Route>
           <Route exact path="/arrays">
             <Array />
