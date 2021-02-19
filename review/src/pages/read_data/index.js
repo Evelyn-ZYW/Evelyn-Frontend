@@ -21,9 +21,14 @@ const ReadData = () => {
     }, [])
     return <div>
         ReadData
-         {ds.map((o, i) => <Link to={"/profile/"+o.user_id}>
-        <Items key={i} username={o.name} message={o.message} />
-    </Link>
+         {ds.map((o, i) => <div key={i}>
+        <Link to={"/profile/" + o.user_id}>
+            <Items username={o.name} message={o.message} />
+        </Link>
+        <Link to={"/edit/" + o.user_id}>
+            Edit
+        </Link>
+    </div>
     )}
     </div>
 }
