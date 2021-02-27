@@ -7,6 +7,7 @@ import Array from 'pages/arrays';
 import ReadData from 'pages/read_data';
 import Profile from 'pages/read_data/profile';
 import EditProfile from 'pages/read_data/edit';
+import Login from 'pages/login';
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,9 @@ function App() {
         </div>
         <Switch>
           <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/read">
             <ReadData />
           </Route>
           <Route exact path="/arrays">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 // import Form from "comps/Form;"
 
@@ -9,11 +9,28 @@ import { useParams } from 'react-router-dom';
 //axios https://advdyn2021.herokuapp.com/user_by_id/5 -> get a single user by it's id
 
 const EditProfile = () => {
+    const params = useParams();
+    const history = useHistory();
     const [p, setP] = useState({});
-    const params = useParams()
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [bio, setBio] = useState("");
+
+    const CheckStorage = async () => {
+        var token = await sessionStorage.getItem("token")
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = token;
+            var resp = await axios.get("https://advdyn2021.herokuapp.com/verify");
+            console.log("verification", resp.data);
+            if (resp.data === "expired") {
+                //hide login
+                // setShow(false);
+                history.push("/");
+            } else {
+                GetData();
+            }
+        }
+    }
 
     const GetData = async () => {
         // var resp3 = axios.get("https://advdyn2021.herokuapp.com/allusers");
@@ -37,8 +54,9 @@ const EditProfile = () => {
     }
 
     useEffect(() => {
-        GetData();
+        CheckStorage();
     }, [])
+
     return <div>
         <input placeholder={p.name} defaultValue={p.name} />
         <input placeholder={p.age} defaultValue={p.age} />
