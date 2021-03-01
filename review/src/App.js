@@ -1,13 +1,19 @@
 import './App.scss';
-import Form from './comps/Form';
-import Main from 'pages/main';
-import User from 'pages/user';
-import List from 'pages/list';
-import Array from 'pages/arrays';
-import ReadData from 'pages/read_data';
-import Profile from 'pages/read_data/profile';
-import EditProfile from 'pages/read_data/edit';
-import Login from 'pages/login';
+// import Form from './comps/Form';
+// import Main from 'pages/main';
+// import User from 'pages/user';
+// import List from 'pages/list';
+// import Array from 'pages/arrays';
+// import ReadData from 'pages/read_data';
+// import Profile from 'pages/read_data/profile';
+// import EditProfile from 'pages/read_data/edit';
+// import Login from 'pages/login';
+
+import Main from 'pages/fullapp';
+import Login from 'pages/fullapp/login';
+import Register from 'pages/fullapp/register';
+import User from 'pages/fullapp/user';
+import Message from 'pages/fullapp/message';
 
 import {
   BrowserRouter as Router,
@@ -20,12 +26,30 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div>
+        {/* <div>
           <Link to='/'>Home</Link>
           <Link to='/arrays'>Arrays</Link>
-        </div>
+        </div> */}
         <Switch>
           <Route exact path="/">
+            <Main />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+        
+          <Route exact path="/profile">
+            <User />
+          </Route>
+
+          {/* This will have parameters later */}
+          <Route exact path="/message">
+            <Message />
+          </Route>
+          {/* <Route exact path="/">
             <Login />
           </Route>
           <Route exact path="/read">
@@ -42,7 +66,7 @@ function App() {
           </Route>
           <Route path="/edit/:id">
             <EditProfile />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
