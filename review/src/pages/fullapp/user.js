@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
 const User = () => {
 
@@ -9,6 +10,14 @@ const User = () => {
         axios call to get my user profile
         axios call to update my user profile
     */
+    const CheckToken = async () => {
+
+    }
+
+    useEffect(() => {
+        CheckToken(); //when the page loads, check if the token is expired or not
+    }, []);
+
     return <div>User</div>
 }
 

@@ -18,13 +18,19 @@ const Login = () => {
     const [un, setUn] = useState("");
     const [pass, setPass] = useState("");
 
+    const [error, setError] = useState(null);
+
     const HandleLogin = async () => {
         const resp = await axios.post("https://advdyn2021.herokuapp.com/user_login", { username: un, password: pass });
         console.log(resp);
         if (resp.data !== "Something went wrong logging in") {
             const token = resp.data;
+            sessionStorage.setItem("token", token);
             axios.defaults.headers.common['Authorization'] = token;
-            history.push("/login");
+            history.push("/profile");
+        } else {
+            //update a state to show an error
+            setError("Incorrect username/password!");
         }
     }
 
@@ -47,6 +53,9 @@ const Login = () => {
         <input type="text" onChange={(e) => setUn(e.target.value)} placeholder="username" />
         <input type="text" onChange={(e) => setPass(e.target.value)} placeholder="password" />
         <button onClick={HandleLogin}>Login</button>
+        <div>
+            {error}
+        </div>
     </div>
 }
 

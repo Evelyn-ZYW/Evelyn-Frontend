@@ -18,7 +18,7 @@ const Main = () => {
         console.log("token", token)
         if (token) {
             axios.defaults.headers.common['Authorization'] = token;
-            history.push("/user");
+            history.push("/profile");
         }
     }
 
