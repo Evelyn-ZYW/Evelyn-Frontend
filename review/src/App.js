@@ -44,7 +44,10 @@ function App() {
           <Route exact path="/profile">
             <User />
           </Route>
-
+          <Route exact path="/profile/edit">
+            <User />
+          </Route>
+          
           {/* This will have parameters later */}
           <Route exact path="/message">
             <Message />
