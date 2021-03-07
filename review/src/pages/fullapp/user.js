@@ -72,6 +72,10 @@ const User = () => {
             <Link to="/profile/edit">
                 Edit Profile
             </Link>
+            <p />
+            <Link to="/message">
+                Message
+            </Link>
         </div>
     }
 }

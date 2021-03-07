@@ -22,6 +22,13 @@ import {
   Link
 } from "react-router-dom";
 
+import axios from 'axios';
+const token = sessionStorage.getItem("token");
+// console.log("token", token)
+if (token) {
+  axios.defaults.headers.common['Authorization'] = token;
+  // history.push("/profile");
+}
 function App() {
   return (
     <Router>
@@ -40,14 +47,14 @@ function App() {
           <Route exact path="/register">
             <Register />
           </Route>
-        
+
           <Route exact path="/profile">
             <User />
           </Route>
           <Route exact path="/profile/edit">
             <User />
           </Route>
-          
+
           {/* This will have parameters later */}
           <Route exact path="/message">
             <Message />
