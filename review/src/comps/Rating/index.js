@@ -15,11 +15,12 @@ const Star = ({ selected = false, onSelect }) => {
 //the Rating Component
 const Rating = ({ totalStars }) => {
   const [selectedStars, setSelectedStars] = useState(0);
+
+
   return createArray(totalStars).map((o, i) => <Star
     key={i}
     selected={selectedStars > i}
     onSelect={() => setSelectedStars(i + 1)}
   />)
 }
-
 export default Rating;
