@@ -15,6 +15,9 @@ import Register from 'pages/fullapp/register';
 import User from 'pages/fullapp/user';
 import Message from 'pages/fullapp/message';
 
+import Practice from 'pages/practice';
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -77,6 +80,9 @@ function App() {
           <Route path="/edit/:id">
             <EditProfile />
           </Route> */}
+          <Route exact path="/practice">
+            <Practice />
+          </Route>
         </Switch>
       </div>
     </Router>
