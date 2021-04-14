@@ -11,13 +11,18 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // border: red solid 1px;
-    background-color: #FFFFFF;
+    background-color: #F3F7FB;
     position: relative;
 `;
 const Tabs = styled.span`
-position: absolute;
-top: 5px;
+    position: absolute;
+    top: 10px;
+    max-width: 100%;
+    min-width: 65%;
+    display: flex;
+    justify-content: center;
+    // border: 1px solid red;
+    overflow: hidden;
 `;
 
 const Body = styled.div`
@@ -25,32 +30,39 @@ const Body = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 390px;
+    max-width: 390px;
 `;
 const OptionButton = styled.button`
     min-width: 112px;
     min-height: 55px;
     border-radius: 5px 5px 0 0;
-    border: 1px solid black;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
     border-bottom: none;
     margin-right:10px;
+    outline: none;
     
     ${props => props.bgcolor && "background-color:" + props.bgcolor + ";"}
 `;
-const OneInput = styled.div`
+const Input = styled.div`
     padding-top: 10px;
-    // border: red solid 1px;
+    max-width: 100%;
+    min-width: 100%;
+    display: ${props => props.display ? props.display : "flex"};
+    flex-direction: column;
 `;
-const OneInput1 = styled.div`
-    padding-top: 10px;
-    display: ${props => props.display ? props.display : "block"};
-`;
+
 const FormInput = styled.input`
-    background: #F2F4FB;
-    min-width: 390px;
+    background: #FFFFFF;
+    max-width: 100%;
+    min-width: 95%;
     min-height: 45px;
+    max-height: 45px;
     border: none;
     border-radius: 5px;
     margin: 10px 0 10px 0;
+    padding: 0px 3%;
 `;
 const FormButton = styled.button`
     max-width: 100%;
@@ -60,6 +72,7 @@ const FormButton = styled.button`
     background: #4285F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: none;
+    border-radius: 5px;
     margin-top: 40px;
     color: #FFF;
     position: absolute;
@@ -70,41 +83,32 @@ const FormButton = styled.button`
     }
 `;
 
-const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onTabSelect, onRegister, onLogin, }) => {
-
-    const [register, setRegister] = useState(false);
-    const [login, setLogin] = useState(true);
-
-
+const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onRegister, onLogin }) => {
 
     return <Container>
         <Tabs>
             <OptionButton onClick={() => {
-                // onTabSelect();
                 onRegister();
-                setRegister(false);
             }} bgcolor={bgcolor1}>Register</OptionButton>
 
             <OptionButton onClick={() => {
-                // onTabSelect();
                 onLogin();
-                setLogin(false);
             }} bgcolor={bgcolor2}>Login</OptionButton>
         </Tabs>
         <br />
         <Body>
-            <OneInput>
+            <Input>
                 EMAIL
-            <FormInput type="text" placeholder="     joe@gmail.com" />
-            </OneInput>
-            <OneInput>
+                <FormInput type="text" placeholder="joe@gmail.com" />
+            </Input>
+            <Input>
                 PASSWORD
-            <FormInput type="password" placeholder="     password" />
-            </OneInput>
-            <OneInput1 display={display}>
+                <FormInput type="password" placeholder="password" />
+            </Input>
+            <Input display={display}>
                 CONFIRM PASSWORD
-            <FormInput type="password" placeholder="     confirm password" />
-            </OneInput1>
+                <FormInput type="password" placeholder="confirm password" />
+            </Input>
         </Body>
         <FormButton>{text}</FormButton>
     </Container>
@@ -112,6 +116,5 @@ const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onTabSelect, onRegist
 UsersAccount.defaultProps = {
     onRegister: () => { },
     onLogin: () => { },
-    onTabSelect: () => { }
 }
 export default UsersAccount;

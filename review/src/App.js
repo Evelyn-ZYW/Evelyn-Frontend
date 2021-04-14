@@ -10,6 +10,7 @@ import './App.scss';
 // import Login from 'pages/login';
 
 import Main from 'pages/fullapp';
+import UserPrac from 'pages/user';
 import Login from 'pages/fullapp/login';
 import Register from 'pages/fullapp/register';
 import User from 'pages/fullapp/user';
@@ -43,6 +44,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Main />
+          </Route>
+          <Route exact path="/user">
+            <UserPrac />
           </Route>
           <Route exact path="/login">
             <Login />

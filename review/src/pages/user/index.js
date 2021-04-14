@@ -2,29 +2,25 @@ import React, { useState } from 'react';
 
 import UsersAccount from 'comps/UsersAccount';
 
-const User = (onRegister, onLogin) => {
+const User = (register, login) => {
 
-
-
-    const [clickedForm, setClickedForm] = useState(onRegister);
+    const [clickedForm, setClickedForm] = useState(register);
 
     const HandleRegister = () => {
-        // alert("clicked tab register")
-        setClickedForm(onRegister)
+        setClickedForm(register)
     }
     const HandleLogin = () => {
-        // alert("clicked tab login")
-        setClickedForm(onLogin)
+        setClickedForm(login)
     }
 
     return <div className="user">
         <UsersAccount
             onRegister={HandleRegister}
             onLogin={HandleLogin}
-            bgcolor1={clickedForm === onRegister ? "#FFF" : "#E0E0E0"}
-            bgcolor2={clickedForm === onLogin ? "#FFF" : "#E0E0E0"}
-            text={clickedForm === onRegister ? "Register" : "Login"}
-            display={clickedForm === onRegister ? "block" : "none"}
+            bgcolor1={clickedForm === register ? "pink" : "#FFF"}
+            bgcolor2={clickedForm === login ? "pink" : "#FFF"}
+            text={clickedForm === register ? "Register" : "Login"}
+            display={clickedForm === register ? "block" : "none"}
         />
 
     </div>
