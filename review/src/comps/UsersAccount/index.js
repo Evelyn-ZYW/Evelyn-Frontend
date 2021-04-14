@@ -83,34 +83,49 @@ const FormButton = styled.button`
     }
 `;
 
-const UsersAccount = ({ bgcolor1, bgcolor2, text, display, onRegister, onLogin }) => {
+const UsersAccount = () => {
+
+    const [tab, setTab] = useState("register");
 
     return <Container>
         <Tabs>
             <OptionButton onClick={() => {
-                onRegister();
-            }} bgcolor={bgcolor1}>Register</OptionButton>
+                setTab("register")
+            }} bgcolor={tab === "register" ? "pink" : "white"}>Register</OptionButton>
 
             <OptionButton onClick={() => {
-                onLogin();
-            }} bgcolor={bgcolor2}>Login</OptionButton>
+                setTab("login")
+            }} bgcolor={tab === "login" ? "pink" : "white"}>Login</OptionButton>
         </Tabs>
         <br />
-        <Body>
-            <Input>
-                EMAIL
+        {tab === "register" ?
+            <Body>
+                <Input>
+                    EMAIL
                 <FormInput type="text" placeholder="joe@gmail.com" />
-            </Input>
-            <Input>
-                PASSWORD
+                </Input>
+                <Input>
+                    PASSWORD
                 <FormInput type="password" placeholder="password" />
-            </Input>
-            <Input display={display}>
-                CONFIRM PASSWORD
+                </Input>
+                <Input>
+                    CONFIRM PASSWORD
                 <FormInput type="password" placeholder="confirm password" />
-            </Input>
-        </Body>
-        <FormButton>{text}</FormButton>
+                </Input>
+            </Body>
+            :
+            <Body>
+                <Input>
+                    EMAIL
+                <FormInput type="text" placeholder="joe@gmail.com" />
+                </Input>
+                <Input>
+                    PASSWORD
+                <FormInput type="password" placeholder="password" />
+                </Input>
+            </Body>
+        }
+        <FormButton>{tab === "register" ? "Register" : "Login"}</FormButton>
     </Container>
 }
 UsersAccount.defaultProps = {
