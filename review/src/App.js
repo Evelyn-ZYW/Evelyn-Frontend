@@ -27,6 +27,7 @@ import {
 } from "react-router-dom";
 
 import axios from 'axios';
+import Interview from 'pages/interview';
 const token = sessionStorage.getItem("token");
 // console.log("token", token)
 if (token) {
@@ -84,8 +85,11 @@ function App() {
           <Route path="/edit/:id">
             <EditProfile />
           </Route> */}
-          <Route exact path="/practice">
+          {/* <Route exact path="/practice">
             <Practice />
+          </Route> */}
+          <Route exact path="/interview">
+            <Interview />
           </Route>
         </Switch>
       </div>
